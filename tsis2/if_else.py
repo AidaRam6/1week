@@ -57,7 +57,7 @@ elif a > b:
     print("2")
 else:
     print("3")
-
+d=3
 #Ex5
 if a == b and c == d:
   print("Hello")
