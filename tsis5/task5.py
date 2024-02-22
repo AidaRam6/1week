@@ -2,7 +2,7 @@ import re
 
 a=input()
 
-pattern = r'a.*b'
+pattern = r'a.*b$'
 
 result = re.search(pattern,a)
 
