@@ -30,7 +30,7 @@ font = pygame.font.SysFont("Verdana", 60)
 font_2 = pygame.font.SysFont(None, 30)
 font_small = pygame.font.SysFont("Verdana", 20)
 game_over = font.render("Game Over", True, BLACK)
-statistic = font.render("Coins:", COINS , True, BLACK)
+statistic = font.render(f"Your score :{COINS}" , True, BLACK)
 
 background = pygame.image.load("AnimatedStreet.png")
 
@@ -77,8 +77,8 @@ class Player(pygame.sprite.Sprite):
 class Coin(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
-        self.image = pygame.image.load("apple.png")
-        self.image = pygame.transform.scale(self.image, (100, 100))
+        self.image = pygame.image.load("coin.png")
+        self.image = pygame.transform.scale(self.image, (50, 50))
         self.rect = self.image.get_rect()
         self.rect.center = (random.randint(40,SCREEN_WIDTH-40), 0)
 
@@ -123,8 +123,8 @@ while True:
     DISPLAYSURF.blit(background, (0,0))
     scores = font_small.render(str(SCORE), True, BLACK)
     DISPLAYSURF.blit(scores, (10,10))
-    collected = font_small.render(str(SCORE), True, BLACK)
-    DISPLAYSURF.blit(scores, (400 - 30,10))
+    collected = font_small.render(str(COINS), True, BLACK)
+    DISPLAYSURF.blit(collected, (400 - 30,10))
     
 
     #Moves and Re-draws all Sprites
@@ -140,7 +140,7 @@ while True:
                    
           DISPLAYSURF.fill(RED)
           DISPLAYSURF.blit(game_over, (30,250))
-          DISPLAYSURF.blit(statistic, (20,200))
+          DISPLAYSURF.blit(statistic , (10,200))
           
           pygame.display.update()
           for entity in all_sprites:
@@ -153,12 +153,14 @@ while True:
     # the collecting sound will be played
     # the coin object will be destroyed
     if pygame.sprite.spritecollideany(P1, coins):
-            pygame.mixer.Sound('collect.wav').play()
-            for coin in coins:
-                coin.kill()
-        #   time.sleep(1)
-            COINS += 1
-            pygame.display.update() 
+        
+        pygame.mixer.Sound('collect.wav').play()
+        for coin in coins:
+            coin.kill()
+            COINS+=1
+        #time.sleep(1)
+                
+        pygame.display.update() 
     if(len(coins) == 0): # if our coin was collected:
         COIN = Coin()   # new coin object will be created and added to the coins group
         coins.add(COIN)

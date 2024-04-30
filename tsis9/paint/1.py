@@ -148,7 +148,7 @@ def drawRightTriangle(screen, color, mouse_pos):
     pygame.draw.polygon(screen, color, triangle_points)
 
 def drawEquilateralTriangle(screen, color, mouse_pos):
-    #define the points in a uint space
+    #define the points in a uint space 
     x = mouse_pos[0]
     y = mouse_pos[1]
     triangle_size = 50

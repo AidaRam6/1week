@@ -28,15 +28,14 @@ while done:
                                 y+=s
                         if event.key == pygame.K_UP:
                                 y-=s
-        if x < 0:
-                x = 0
+        if x < rad:
+                x = rad
         elif x + diameter > s_w:
                 x = s_w - diameter
-        if y < 0:
-                y = 0
+        if y < rad:
+                y = rad
         elif y + diameter > s_h:
-                y = s_h - diameter
-        
+                y = s_h - diameter        
         screen.fill((255,255,255))
         
         pygame.draw.circle(screen,[255,0,0],(x,y),rad)

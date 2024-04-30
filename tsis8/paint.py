@@ -45,7 +45,7 @@ def main():
                 # start a new line
                 last_pos = pygame.mouse.get_pos()
             
-            if event.type == pygame.MOUSEMOTION and event.buttons[0]:
+            if event.type == pygame.MOUSEMOTION and event.buttons[0]:   
                 # draw a line from the last point to the current point
                 if last_pos is not None:
                     start_pos = last_pos
